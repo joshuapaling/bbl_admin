@@ -1,0 +1,48 @@
+
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th,
+.table > tfoot > tr > td {
+  vertical-align: middle;
+}
+
+th {
+  background: #d0ddf5;
+  font-weight: 100;
+  font-size: 19px;
+  color: $gray-darker;
+}
+
+td {
+  color: $brand-primary;
+}
+
+th.delete,
+td.delete {
+  width: 80px;
+  text-align: center;
+  a {
+    color: #fa2230;
+    font-size: 26px;
+    &:hover {
+      color: $brand-danger;
+    }
+  }
+}
+
+th.edit,
+td.edit {
+  width: 80px;
+  text-align: center;
+  text-transform: uppercase;
+
+  a {
+    font-size: 26px;
+    &:hover {
+      text-decoration: none;
+      color: lighten($brand-primary, 20%);
+    }
+  }
+}

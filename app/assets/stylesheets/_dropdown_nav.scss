@@ -1,0 +1,30 @@
+.dropdown-menu {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-width: 220px;
+  background: $brand-primary;
+  text-transform: uppercase;
+  font-weight: 600;
+  box-shadow: none;
+  border: 1px solid #6f8fc3;
+
+  > li {
+    border-top: 1px solid #6f8fc3;
+    &:first-child {
+      border-top: none !important;
+    }
+  }
+
+  > li > a {
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 26px;
+  }
+
+  > li.active > a,
+  > li > a:hover {
+    color: #fff;
+    background: $brand-primary-darker;
+  }
+
+}

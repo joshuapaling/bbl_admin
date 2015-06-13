@@ -1,0 +1,81 @@
+$gray-darker: #2c2c2c;
+$brand-primary: #23529c;
+$brand-primary-darker: #18386a;
+$pale-blue: #f0f4fc;
+$border-blue: #d1def4;
+
+$font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$headings-color:          $brand-primary;
+$headings-font-weight:    100;
+$font-size-h1:            40px;
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Padding between columns. Gets divided in half for the left and right.
+// $grid-gutter-width:         30px;
+$grid-gutter-width:         20px;
+
+$border-radius-base:        0px;
+$border-radius-large:       0px;
+$border-radius-small:       0px;
+
+// NAVBARS
+
+$navbar-inverse-bg:                         $brand-primary;
+$navbar-inverse-color:                      #fff;
+$navbar-inverse-link-color:                 #fff;
+$navbar-inverse-link-hover-color:           #fff;
+$navbar-inverse-link-hover-bg:              $brand-primary-darker;
+$navbar-inverse-link-active-bg:             $brand-primary-darker;
+
+//== Tables
+
+//** Background color used for `.table-striped`.
+$table-bg:                      $pale-blue;
+$table-bg-accent:               #fff;
+//** Background color used for `.table-hover`.
+$table-bg-hover:                #f5f5f5;
+$table-bg-active:               $table-bg-hover;
+
+//** Border color for table and cell borders.
+$table-border-color:            $border-blue;
+$table-cell-padding:            10px 18px;
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+$btn-font-weight:                100;
+
+//== Components
+//
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+
+$padding-base-vertical:     8px;
+$padding-base-horizontal:   14px;
+
+$padding-large-vertical:    16px;
+$padding-large-horizontal:  22px;
+
+$padding-small-vertical:    7px;
+$padding-small-horizontal:  12px;
+
+$padding-xs-vertical:       3px;
+$padding-xs-horizontal:     7px;
+
+$line-height-large:         1.33;
+$line-height-small:         1.5;
+
+//== Panels
+
+$panel-default-heading-bg: $border-blue;
+$panel-default-text:          $gray-darker;
+$panel-default-border:        $border-blue;
+$panel-body-padding:          20px !default;
+$panel-heading-padding:       16px 20px !default;
+
+//== Inputs
+$input-border: $border-blue;

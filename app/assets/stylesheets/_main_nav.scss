@@ -1,0 +1,14 @@
+
+.main-nav {
+  font-size: 20px;
+  font-weight: 100;
+
+  &.navbar-inverse .navbar-nav > li > a {
+    padding: 28px 26px;
+  }
+
+  .navbar-nav > li {
+    margin-right: 1px;
+  }
+
+}
