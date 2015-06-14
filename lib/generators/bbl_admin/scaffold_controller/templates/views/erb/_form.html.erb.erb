@@ -1,37 +1,14 @@
-<%%= form_for(<%= "[:#{prefix}, @#{singular_table_name}]" %>) do |f| %>
-  <%% if @<%= singular_table_name %>.errors.any? %>
-    <div id="error_explanation">
-      <h2><%%= pluralize(@<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h2>
-
-      <ul>
-      <%% @<%= singular_table_name %>.errors.full_messages.each do |msg| %>
-        <li><%%= msg %></li>
-      <%% end %>
-      </ul>
-    </div>
-  <%% end %>
-
+<%%= simple_form_for(<%= "[:#{prefix}, @#{singular_table_name}]" %>) do |f| %>
 <% attributes.each do |attribute| -%>
-  <div class="field">
-<% if attribute.password_digest? -%>
-    <%%= f.label :password %><br>
-    <%%= f.password_field :password %>
-  </div>
-  <div>
-    <%%= f.label :password_confirmation %><br>
-    <%%= f.password_field :password_confirmation %>
-<% else -%>
-  <% if attribute.reference? -%>
-    <%%= f.label :<%= attribute.column_name %> %><br>
-    <%%= f.<%= attribute.field_type %> :<%= attribute.column_name %> %>
-  <% else -%>
-    <%%= f.label :<%= attribute.name %> %><br>
-    <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
-  <% end -%>
-<% end -%>
+  <div class="row">
+    <div class="col-sm-6">
+    <%- if attribute.reference? -%>
+      <%%= f.input :<%= attribute.column_name %> %>
+    <%- else -%>
+      <%%= f.input :<%= attribute.name %> %>
+    <%- end -%>
+    </div>
   </div>
 <% end -%>
-  <div class="actions">
-    <%%= f.submit %>
-  </div>
+  <%%= admin_submit_btn(f) %>
 <%% end %>

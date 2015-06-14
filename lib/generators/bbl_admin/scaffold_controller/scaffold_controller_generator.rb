@@ -26,9 +26,6 @@ module BblAdmin
       class_option :prefix_name, banner: "admin", type: :string, default: "admin",
                    desc: "Define the prefix of controller"
 
-      class_option :bootstrap,  required: false, default: nil, aliases: :b,
-                   desc: "Use bootstrap for templates"
-
       argument :attributes, type: :array, default: [], banner: "field:type field:type"
 
       def initialize(args, *options) #:nodoc:
@@ -54,11 +51,7 @@ module BblAdmin
       def copy_view_files
         available_views.each do |view|
           filename = filename_with_extensions(view)
-          if bootstrap && handler == :erb #only support ERB for now, should be easy to support HAML later.
-            template_path = "views/#{handler}_bootstrap/#{filename}.erb"
-          else
-            template_path = "views/#{handler}/#{filename}.erb"
-          end
+          template_path = "views/#{handler}/#{filename}.erb"
           template template_path, File.join("app/views", prefix, controller_file_path, filename)
         end
       end
@@ -68,10 +61,6 @@ module BblAdmin
       end
 
       protected
-
-      def bootstrap
-        options[:bootstrap]
-      end
 
       def prefix
         options[:prefix_name]
