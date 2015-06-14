@@ -26,9 +26,6 @@ module BblAdmin
       class_option :prefix_name, banner: "admin", type: :string, default: "admin",
                    desc: "Define the prefix of controller"
 
-      class_option :parent_controller, banner: "admin", type: :string, default: "application",
-                   desc: "Define the parent controller"
-
       class_option :bootstrap,  required: false, default: nil, aliases: :b,
                    desc: "Use bootstrap for templates"
 
@@ -43,17 +40,7 @@ module BblAdmin
       end
 
       def create_controller_files
-        # I think there should be a better way to detect if jbuilder is in use
-        # If you know it, please let me know
-        if Gem::Specification.find_all_by_name('jbuilder').length >= 1
-          template "controllers/jbuilder/controller.rb.erb", File.join('app/controllers', prefix, class_path, "#{controller_file_name}_controller.rb")
-        else
-          template "controllers/railties/controller.rb.erb", File.join('app/controllers', prefix, class_path, "#{controller_file_name}_controller.rb")
-        end
-      end
-
-      def create_test_files
-        template "tests/test_unit/functional_test.rb.erb", File.join("test/controllers", prefix, controller_class_path, "#{controller_file_name}_controller_test.rb")
+        template "controllers/railties/controller.rb.erb", File.join('app/controllers', prefix, class_path, "#{controller_file_name}_controller.rb")
       end
 
       hook_for :helper, in: :rails do |helper|
@@ -73,13 +60,6 @@ module BblAdmin
             template_path = "views/#{handler}/#{filename}.erb"
           end
           template template_path, File.join("app/views", prefix, controller_file_path, filename)
-        end
-
-        # I think there should be a better way to detect if jbuilder is in use
-        if Gem::Specification.find_all_by_name('jbuilder').length >= 1
-          %w(index show).each do |view|
-            template "views/jbuilder/#{view}.json.jbuilder.erb", File.join("app/views", prefix, controller_file_path, "#{view}.json.jbuilder")
-          end
         end
       end
 
@@ -103,10 +83,6 @@ module BblAdmin
 
       def prefixed_controller_class_name
         "#{prefix.capitalize}::#{controller_class_name}"
-      end
-
-      def parent_controller_class_name
-        options[:parent_controller].capitalize
       end
 
       def prefixed_route_url
