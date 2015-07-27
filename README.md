@@ -22,7 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO: Write better usage instructions here
+
+Some stuff it does:
+
+- maintains styled devise views for `administrator` user
+- Provides helper methods for styling admin areas, creating tables, edit and delete buttons, etc.
+- provides generators for building admin interfaces
 
 ## Development
 
@@ -32,7 +38,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/bbl_admin.
+Bug reports and pull requests are welcome on GitHub at https://github.com/joshuapaling/bbl_admin.
 
 
 ## License

@@ -8,25 +8,30 @@ module CrudHelper
     link_to text, url, :class => 'btn btn-lg btn-primary clearfix'
   end
 
-  def new_link(model, url = nil)
+  def new_link(model, options = {})
     name = model.table_name.singularize
-    url ||= send("new_admin_#{name}_path")
-    text = "+ New #{name.humanize}"
+    url = options[:url] || send("new_admin_#{name}_path")
+    text = options[:text] || "+ New #{name.humanize}"
     big_link(text, url)
   end
 
-  def td_delete(resource, url_options = nil)
-    url_options ||= [:admin, resource]
-    anchor = raw('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>')
-    link = link_to anchor, url_options, method: :delete,
+  def td_delete(resource, options = {})
+    url = options[:url] = [:admin, resource]
+
+    if options[:disabled]
+      link = ''
+    else
+      anchor = raw('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>')
+      link = link_to anchor, url, method: :delete,
         data: { confirm: 'Are you sure?' }
+    end
 
     raw('<td class="delete">' + link + '</td>')
   end
 
-  def td_edit(resource, url = nil)
+  def td_edit(resource, options = {})
     name = resource.class.table_name.singularize
-    url ||= send("edit_admin_#{name}_path", resource)
+    url = options[:url] || send("edit_admin_#{name}_path", resource)
     link = link_to 'Edit', url
     raw('<td class="edit">' + link + '</td>')
 
