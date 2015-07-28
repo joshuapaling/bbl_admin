@@ -30,7 +30,15 @@ Some stuff it does:
 - Provides helper methods for styling admin areas, creating tables, edit and delete buttons, etc.
 - provides generators for building admin interfaces
 
+## Generators
+
+use them like this:
+
+`bin/rails g bbl_admin:scaffold_controller Post title:string content:text published:boolean`
+
 ## Development
+
+# ToDo - this is the default generated text below. Replace it.
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
