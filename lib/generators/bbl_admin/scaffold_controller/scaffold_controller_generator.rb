@@ -9,8 +9,6 @@ module BblAdmin
 
       source_root File.expand_path('../templates', __FILE__)
 
-      class_option :template_engine, desc: 'Template engine to be invoked (erb or haml).'
-
       check_class_collision suffix: "Controller"
 
       check_class_collision suffix: "ControllerTest"
@@ -41,7 +39,8 @@ module BblAdmin
       end
 
       hook_for :helper, in: :rails do |helper|
-        invoke helper, [prefixed_controller_class_name]
+        # We don't want helpers, so override the superclass and do nothing.
+        # invoke helper, [prefixed_controller_class_name]
       end
 
       def create_root_folder
@@ -54,10 +53,6 @@ module BblAdmin
           template_path = "views/#{handler}/#{filename}.erb"
           template template_path, File.join("app/views", prefix, controller_file_path, filename)
         end
-      end
-
-      hook_for :assets, in: :rails do |assets|
-        invoke assets, [prefixed_class_name]
       end
 
       protected
@@ -95,7 +90,7 @@ module BblAdmin
       end
 
       def handler
-        options[:template_engine]
+        :erb
       end
 
       def filename_with_extensions(name)

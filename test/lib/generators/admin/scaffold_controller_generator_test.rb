@@ -29,25 +29,11 @@ module BblAdmin
         end
       end
 
-      def test_helper_are_invoked_with_a_pluralized_name
-        run_generator
-        assert_file "app/helpers/admin/users_helper.rb", /module Admin::UsersHelper/
-        assert_file "test/helpers/admin/users_helper_test.rb", /class Admin::UsersHelperTest < ActionView::TestCase/
-      end
-
       def test_erb_views_are_generated
         run_generator
 
         %w(index edit new show).each do |view|
           assert_file "app/views/admin/users/#{view}.html.erb"
-        end
-      end
-
-      def test_haml_views_are_generated
-        run_generator ['user', '-e', 'haml']
-
-        %w(index edit new show).each do |view|
-          assert_file "app/views/admin/users/#{view}.html.haml"
         end
       end
 
@@ -73,8 +59,8 @@ module BblAdmin
       #   end
       # end
 
-      def test_skip_helper_if_required
-        run_generator ["User", "name:string", "age:integer", "--no-helper"]
+      def test_helpers_are_never_generated
+        run_generator ["User", "name:string", "age:integer"] # explicitly DON'T include the "--no-helper" option; we never want it to include a helper, regardless of that option
         assert_no_file "app/helpers/admin/users_helper.rb"
         assert_no_file "test/helpers/admin/users_helper_test.rb"
       end
