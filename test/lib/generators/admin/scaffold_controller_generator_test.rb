@@ -32,8 +32,13 @@ module BblAdmin
       def test_erb_views_are_generated
         run_generator
 
-        %w(index edit new show).each do |view|
+        %w(index edit _form).each do |view|
           assert_file "app/views/admin/users/#{view}.html.erb"
+        end
+
+        # For BBL Admin, we explicitly don't want show (we don't use it) and new (we use edit for that purpose)
+        %w(show new).each do |view|
+          assert_no_file "app/views/admin/users/#{view}.html.erb"
         end
       end
 
