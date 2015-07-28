@@ -1,4 +1,3 @@
-require 'rubygems/specification'
 require 'rails/generators/named_base'
 require 'rails/generators/resource_helpers'
 
@@ -12,8 +11,6 @@ module BblAdmin
       check_class_collision suffix: "Controller"
 
       check_class_collision suffix: "ControllerTest"
-
-      check_class_collision suffix: "Helper"
 
       class_option :orm, banner: "NAME", type: :string, required: true,
                    desc: "ORM to generate the controller for"
@@ -43,7 +40,7 @@ module BblAdmin
         # invoke helper, [prefixed_controller_class_name]
       end
 
-      def create_root_folder
+      def create_views_root_folder
         empty_directory File.join("app/views", prefix, controller_file_path)
       end
 
@@ -119,30 +116,6 @@ module BblAdmin
 
           class_collisions "#{options[:prefix]}#{name}#{options[:suffix]}"
         end
-      end
-
-      def attributes_hash
-        return if attributes_names.empty?
-
-        attributes_names.map do |name|
-          if %w(password password_confirmation).include?(name) && attributes.any?(&:password_digest?)
-            "#{name}: 'secret'"
-          else
-            "#{name}: @#{singular_table_name}.#{name}"
-          end
-        end.sort.join(', ')
-      end
-
-      def attributes_list_with_timestamps
-        attributes_list(attributes_names + %w(created_at updated_at))
-      end
-
-      def attributes_list(attributes = attributes_names)
-        if self.attributes.any? {|attr| attr.name == 'password' && attr.type == :digest}
-          attributes = attributes.reject {|name| %w(password password_confirmation).include? name}
-        end
-
-        attributes.map { |a| ":#{a}"} * ', '
       end
 
     end

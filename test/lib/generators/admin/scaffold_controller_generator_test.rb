@@ -42,28 +42,6 @@ module BblAdmin
         end
       end
 
-      # def test_functional_tests
-      #   run_generator ["User", "name:string", "age:integer", "organization:references{polymorphic}"]
-
-      #   assert_file "test/controllers/admin/users_controller_test.rb" do |content|
-      #     assert_match(/class Admin::UsersControllerTest < ActionController::TestCase/, content)
-      #     assert_match(/test "should get index"/, content)
-      #     assert_match(/post :create, user: \{ age: @user\.age, name: @user\.name, organization_id: @user\.organization_id, organization_type: @user\.organization_type \}/, content)
-      #     assert_match(/patch :update, id: @user, user: \{ age: @user\.age, name: @user\.name, organization_id: @user\.organization_id, organization_type: @user\.organization_type \}/, content)
-      #   end
-      # end
-
-      # def test_functional_tests_without_attributes
-      #   run_generator ["User"]
-
-      #   assert_file "test/controllers/admin/users_controller_test.rb" do |content|
-      #     assert_match(/class Admin::UsersControllerTest < ActionController::TestCase/, content)
-      #     assert_match(/test "should get index"/, content)
-      #     assert_match(/post :create, user: \{  \}/, content)
-      #     assert_match(/patch :update, id: @user, user: \{  \}/, content)
-      #   end
-      # end
-
       def test_helpers_are_never_generated
         run_generator ["User", "name:string", "age:integer"] # explicitly DON'T include the "--no-helper" option; we never want it to include a helper, regardless of that option
         assert_no_file "app/helpers/admin/users_helper.rb"
