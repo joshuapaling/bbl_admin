@@ -16,7 +16,7 @@ module CrudHelper
   end
 
   def td_delete(resource, options = {})
-    url = options[:url] = [:admin, resource]
+    url = options[:url] || [:admin, resource]
 
     if options[:disabled]
       link = ''
