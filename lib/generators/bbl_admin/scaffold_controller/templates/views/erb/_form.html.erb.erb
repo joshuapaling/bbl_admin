@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-6">
     <%- if attribute.reference? -%>
-      <%%= f.input :<%= attribute.column_name %> %>
+      <%%= f.association :<%= attribute.name %> %>
     <%- else -%>
       <%%= f.input :<%= attribute.name %> %>
     <%- end -%>
