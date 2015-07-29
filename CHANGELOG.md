@@ -6,6 +6,9 @@ This project will mostly attempt to stick to [Semantic Versioning](http://semver
 
 ## [Unreleased][unreleased]
 ### Changed
+- unreleased changes go here
+
+## [0.2.1] - 2015-07-29
 ### Fixed
 - generated index.html.erb was generating code with `singular_table_name` rather than substituting it with the correct actual singular table name (eg `post`, `category`, etc)
 - generated _form.html.erb uses f.association rather than regular f.input
