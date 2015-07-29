@@ -19,8 +19,8 @@
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
         <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
 <% end -%>
-        <%%= td_edit(singular_table_name) %>
-        <%%= td_delete(singular_table_name) %>
+        <%%= td_edit(<%= singular_table_name %>) %>
+        <%%= td_delete(<%= singular_table_name %>) %>
       </tr>
     <%% end %>
   </tbody>

@@ -6,7 +6,8 @@ This project will mostly attempt to stick to [Semantic Versioning](http://semver
 
 ## [Unreleased][unreleased]
 ### Changed
-- changes go here
+### Fixed
+- generated index.html.erb was generating code with `singular_table_name` rather than substituting it with the correct actual singular table name (eg `post`, `category`, etc)
 
 ## [0.2.0] - 2015-07-27
 ### Changed
