@@ -1,0 +1,23 @@
+<%= simple_form_for([:admin, @blog_post]) do |f| %>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.input :title %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.input :content %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.input :published %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.association :category %>
+    </div>
+  </div>
+  <%= admin_submit_btn(f) %>
+<% end %>

@@ -1,7 +1,7 @@
-<%%= back_link 'Back to all <%= plural_table_name %>', <%= prefixed_index_helper %>_path %>
+<%%= back_link 'Back to all <%= plural_table_name.humanize.downcase %>', <%= prefixed_index_helper %>_path %>
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <%%= new_or_edit(@<%= singular_table_name %>) %> <%= singular_table_name %>
+    <%%= new_or_edit(@<%= singular_table_name %>) %> <%= singular_table_name.humanize.downcase %>
   </div>
   <div class="panel-body">
     <%%= render 'form' %>

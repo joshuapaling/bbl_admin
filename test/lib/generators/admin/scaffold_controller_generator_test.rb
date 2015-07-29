@@ -5,7 +5,7 @@ module BblAdmin
     class ScaffoldControllerGeneratorTest < Rails::Generators::TestCase
       destination File.join(Rails.root)
       tests BblAdmin::Generators::ScaffoldControllerGenerator
-      arguments %w(User name:string age:integer)
+      arguments %w(BlogPost title:string content:text published:boolean category:references)
 
       setup :prepare_destination
       setup :copy_routes
@@ -13,8 +13,8 @@ module BblAdmin
       def test_controller_matches_expected
         run_generator
 
-        assert_file "app/controllers/admin/users_controller.rb" do |content|
-          path = File.expand_path('../../../../expected_files/users_controller.rb', __FILE__)
+        assert_file "app/controllers/admin/blog_posts_controller.rb" do |content|
+          path = File.expand_path('../../../../expected_files/blog_posts_controller.rb', __FILE__)
           expected_content = File.open(path, "rb").read
           assert_equal(expected_content, content)
         end
@@ -29,16 +29,46 @@ module BblAdmin
         end
       end
 
-      def test_erb_views_are_generated
+      def test_index_view_matches_expected
+        run_generator
+
+        assert_file "app/views/admin/blog_posts/index.html.erb" do |content|
+          path = File.expand_path('../../../../expected_files/index.html.erb', __FILE__)
+          expected_content = File.open(path, "rb").read
+          assert_equal(expected_content, content)
+        end
+      end
+
+      def test_edit_view_matches_expected
+        run_generator
+
+        assert_file "app/views/admin/blog_posts/edit.html.erb" do |content|
+          path = File.expand_path('../../../../expected_files/edit.html.erb', __FILE__)
+          expected_content = File.open(path, "rb").read
+          assert_equal(expected_content, content)
+        end
+      end
+
+      def test_form_view_matches_expected
+        run_generator
+
+        assert_file "app/views/admin/blog_posts/_form.html.erb" do |content|
+          path = File.expand_path('../../../../expected_files/_form.html.erb', __FILE__)
+          expected_content = File.open(path, "rb").read
+          assert_equal(expected_content, content)
+        end
+      end
+
+      def test_only_wanted_views_are_generated
         run_generator
 
         %w(index edit _form).each do |view|
-          assert_file "app/views/admin/users/#{view}.html.erb"
+          assert_file "app/views/admin/blog_posts/#{view}.html.erb"
         end
 
         # For BBL Admin, we explicitly don't want show (we don't use it) and new (we use edit for that purpose)
         %w(show new).each do |view|
-          assert_no_file "app/views/admin/users/#{view}.html.erb"
+          assert_no_file "app/views/admin/blog_posts/#{view}.html.erb"
         end
       end
 

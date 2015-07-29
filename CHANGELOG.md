@@ -9,6 +9,7 @@ This project will mostly attempt to stick to [Semantic Versioning](http://semver
 ### Fixed
 - generated index.html.erb was generating code with `singular_table_name` rather than substituting it with the correct actual singular table name (eg `post`, `category`, etc)
 - generated _form.html.erb uses f.association rather than regular f.input
+- two-word model names were not being humanized, and were showing up in views as eg. 'edit blog_post' rather than 'edit blog post'
 
 ## [0.2.0] - 2015-07-27
 ### Changed

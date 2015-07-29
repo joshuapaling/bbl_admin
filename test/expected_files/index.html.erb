@@ -1,0 +1,31 @@
+<%= page_header 'Blog posts' %>
+<%= new_link(BlogPost) %>
+<br /><br />
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th class="edit"></th>
+      <th class="delete"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blog_posts.each do |blog_post| %>
+      <tr>
+        <td><%= blog_post.title %></td>
+        <td><%= blog_post.content %></td>
+        <td><%= blog_post.published %></td>
+        <td><%= blog_post.category %></td>
+        <%= td_edit(blog_post) %>
+        <%= td_delete(blog_post) %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= new_link(BlogPost) %>

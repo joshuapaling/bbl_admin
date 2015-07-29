@@ -1,0 +1,9 @@
+<%= back_link 'Back to all blog posts', admin_blog_posts_path %>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <%= new_or_edit(@blog_post) %> blog post
+  </div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>

@@ -34,7 +34,7 @@ Some stuff it does:
 
 use them like this:
 
-`bin/rails g bbl_admin:scaffold_controller Post title:string content:text published:boolean`
+`bin/rails g bbl_admin:scaffold_controller Post title:string content:text published:boolean category:references`
 
 ## Development
 
