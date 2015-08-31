@@ -14,6 +14,7 @@ class <%= prefixed_controller_class_name %>Controller < Admin::BaseController
   # GET <%= prefixed_route_url %>/new
   def new
     @<%= singular_table_name %> = <%= orm_class.build(class_name) %>
+    render 'edit'
   end
 
   # GET <%= prefixed_route_url %>/1/edit
