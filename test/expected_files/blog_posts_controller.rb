@@ -9,6 +9,7 @@ class Admin::BlogPostsController < Admin::BaseController
   # GET /admin/blog_posts/new
   def new
     @blog_post = BlogPost.new
+    render 'edit'
   end
 
   # GET /admin/blog_posts/1/edit
