@@ -1,7 +1,7 @@
 module CrudHelper
 
   def new_or_edit(resource)
-    resource.id ? 'Edit' : 'New'
+    resource.persisted? ? 'Edit' : 'New'
   end
 
   def big_link(text, url)
