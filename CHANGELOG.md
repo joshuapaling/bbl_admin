@@ -8,6 +8,10 @@ This project will mostly attempt to stick to [Semantic Versioning](http://semver
 ### Changed
 - unreleased changes go here
 
+## [Unreleased][unreleased]
+### Changed
+- Add a confirmation dialogue option when deleting a row to the template.
+
 ## [0.3.0] - 2015-09-01
 ### Fixed
 - Change `new_or_edit` method now uses `persisted?` instead of `id`.
