@@ -15,28 +15,6 @@ module CrudHelper
     big_link(text, url)
   end
 
-  def td_delete(resource, options = {})
-    url = options[:url] || [:admin, resource]
-
-    if options[:disabled]
-      link = ''
-    else
-      anchor = raw('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>')
-      link = link_to anchor, url, method: :delete,
-        data: { confirm: 'Are you sure?' }
-    end
-
-    raw('<td class="delete">' + link + '</td>')
-  end
-
-  def td_edit(resource, options = {})
-    name = resource.class.table_name.singularize
-    url = options[:url] || send("edit_admin_#{name}_path", resource)
-    link = link_to 'Edit', url
-    raw('<td class="edit">' + link + '</td>')
-
-  end
-
   def back_link(text, url)
     link_to raw('< &nbsp;&nbsp; ' + text), url, :class => 'btn btn-lg btn-default btn-back'
   end
