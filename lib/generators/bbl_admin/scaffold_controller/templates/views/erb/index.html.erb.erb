@@ -19,7 +19,7 @@
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
         <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
 <% end -%>
-        <%%= td_edit(<%= singular_table_name %>) %>
+        <td class="edit"><%%= link_to 'Edit', edit_admin_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
         <%%= td_delete(<%= singular_table_name %>) %>
       </tr>
     <%% end %>
