@@ -8,6 +8,18 @@ This project will mostly attempt to stick to [Semantic Versioning](http://semver
 ### Changed
 - unreleased changes go here
 
+## [0.3.0] - 2015-09-01
+### Fixed
+- Change `new_or_edit` method now uses `persisted?` instead of `id`.
+- Scaffold generator now renders correct view for new action.
+
+### Changed
+- `td_delete` and `td_edit` method index.html.erb template is now replaced with the corresponding inline code. 
+
+### Removed
+- `td_delete` method
+- `td_edit` method
+
 ## [0.2.1] - 2015-07-29
 ### Fixed
 - generated index.html.erb was generating code with `singular_table_name` rather than substituting it with the correct actual singular table name (eg `post`, `category`, etc)
