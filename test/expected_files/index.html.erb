@@ -22,7 +22,7 @@
         <td><%= blog_post.published %></td>
         <td><%= blog_post.category %></td>
         <td class="edit"><%= link_to 'Edit', edit_admin_blog_post_path(blog_post) %></td>
-        <td class="delete"><%= link_to bs_icon('trash'), admin_blog_post_path(blog_post), method: :delete %></td>
+        <td class="delete"><%= link_to bs_icon('trash'), admin_blog_post_path(blog_post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

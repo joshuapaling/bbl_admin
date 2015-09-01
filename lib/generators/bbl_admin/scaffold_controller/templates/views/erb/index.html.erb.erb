@@ -20,7 +20,7 @@
         <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
 <% end -%>
         <td class="edit"><%%= link_to 'Edit', edit_admin_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
-        <td class="delete"><%%= link_to bs_icon('trash'), admin_<%= singular_table_name %>_path(<%= singular_table_name %>), method: :delete %></td>
+        <td class="delete"><%%= link_to bs_icon('trash'), admin_<%= singular_table_name %>_path(<%= singular_table_name %>), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <%% end %>
   </tbody>
