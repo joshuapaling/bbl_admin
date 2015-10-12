@@ -8,7 +8,7 @@ This project will mostly attempt to stick to [Semantic Versioning](http://semver
 ### Changed
 - unreleased changes go here
 
-## [Unreleased][unreleased]
+## [0.3.1] - 2015-10-13
 ### Added
 - confirmation dialogue option when deleting a row to the template.
 - `flash_class`, `controller?`, and `action?` methods to `CrudHelper`
