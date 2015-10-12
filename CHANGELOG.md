@@ -9,8 +9,9 @@ This project will mostly attempt to stick to [Semantic Versioning](http://semver
 - unreleased changes go here
 
 ## [Unreleased][unreleased]
-### Changed
-- Add a confirmation dialogue option when deleting a row to the template.
+### Added
+- confirmation dialogue option when deleting a row to the template.
+- `flash_class`, `controller?`, and `action?` methods to `CrudHelper`
 
 ## [0.3.0] - 2015-09-01
 ### Fixed
@@ -18,11 +19,11 @@ This project will mostly attempt to stick to [Semantic Versioning](http://semver
 - Scaffold generator now renders correct view for new action.
 
 ### Changed
-- `td_delete` and `td_edit` method index.html.erb template is now replaced with the corresponding inline code. 
+- `td_delete` and `td_edit` method index.html.erb template is now replaced with the corresponding inline code.
 
 ### Removed
-- `td_delete` method
-- `td_edit` method
+- `td_delete` method (see index.html.erb template for correct updated code)
+- `td_edit` method (see index.html.erb template for correct updated code)
 
 ## [0.2.1] - 2015-07-29
 ### Fixed

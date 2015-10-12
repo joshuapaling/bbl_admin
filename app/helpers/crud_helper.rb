@@ -1,5 +1,24 @@
 module CrudHelper
 
+  # from https://coderwall.com/p/jzofog
+  def flash_class(level)
+    case level.to_sym
+        when :notice then "alert alert-info"
+        when :success then "alert alert-success"
+        when :error then "alert alert-danger"
+        when :alert then "alert alert-warning"
+        else 'alert alert-info'
+    end
+  end
+
+  def controller?(*controller)
+    controller.include?(params[:controller])
+  end
+
+  def action?(*action)
+    action.include?(params[:action])
+  end
+
   def new_or_edit(resource)
     resource.persisted? ? 'Edit' : 'New'
   end
