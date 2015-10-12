@@ -1,33 +1,32 @@
 
 - create new rails project without test unit `rails new my_app -T`
 - `git init; git add .; git commit -m "initial commit"`
-- add bitbucket project & push up
+- add bitbucket project & push up. **Make sure you're in the BBL account, not your personal account!**
 - [uninstall turbolink](http://blog.steveklabnik.com/posts/2013-06-25-removing-turbolinks-from-rails-4)
 
-# Setting up Gems
+# Set up Devise (Administrators and Users)
 
-1. Install the Devise gem. See their [Getting Started](https://github.com/plataformatec/devise#getting-started) guide.
+1. [Install devise](https://github.com/plataformatec/devise#getting-started)
 
-We need to customise the Devise files. In `config/initializers/devise.rb`.
+Generate devise models for Administrator and User (if you need it):
+`rails generate devise Administrator`
+`rails generate devise User`
+`rake db:migrate`
 
-- Set the `config.scoped_views` to `true`.
+In `config/initializers/devise.rb`:
+
+- Set the `config.scoped_views` to `true`. (We'll want `Users` and `Administrators`)
 - Set the `config.default_scope` to `administrator`.
 
-2. Install the BBL admin gem. Via the command:
+In `app/models/administrator.rb`, remove `:registerable`
+
+-----
+
+# Install the BBL admin gem:
+
     `gem 'bbl_admin', github: 'joshuapaling/bbl_admin', tag: 'vx.x.x`
 
-You should probably specify a tag until the gem gets into a stable release.
-
-(If you want to read more about installing gems from git repos. Check out the bundler guide: http://bundler.io/git.html).
-
-# Generating the models and controllers
-
-## Generating Admin model and controller
-
-### Model
-1. Run `rails generate devise Administrator` to set up the administrator model.
-2. Run the migrations `rake db:migrate`.
-3. Remove `:registerable` option from `administrator.rb`.
+You should specify a tag until the gem gets into a stable release.
 
 ### Controller
 
