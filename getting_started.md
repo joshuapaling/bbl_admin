@@ -1,6 +1,16 @@
-Here's (WIP) steps on how to start a new project "the BBL way".
+Here's steps on how to start a new project "the BBL way". This is WIP. To get it really good, we'd have to spend a day or so creating "fake" new projects using the steps this guide, and just repeat till it's all smooth.
 
 - create new rails project without test unit `rails new my_app -T`
+
+- add the following to `.gitignore` (before your first commit!)
+
+```
+/public/uploads
+/config/secrets.yml
+/config/database.yml
+/coverage
+```
+
 - `git init; git add .; git commit -m "initial commit"`
 - add bitbucket project & push up. **Make sure you're in the BBL account, not your personal account!**
 - [uninstall turbolink](http://blog.steveklabnik.com/posts/2013-06-25-removing-turbolinks-from-rails-4)
@@ -22,15 +32,6 @@ development:
 test:
   <<: *default
   database: my_app_test
-```
-
-- add the following to `.gitignore`
-
-```
-/public/uploads
-/config/secrets.yml
-/config/database.yml
-/coverage
 ```
 
 # Set up Devise (Administrators and Users)
@@ -61,7 +62,48 @@ Next, copy the following files from another existing BBL project:
 `app/views/layouts/admin/*`
 `app/views/layouts/admin.html.erb`
 
-And create:
+You should add required devise stuff to your `ApplicationController` - it should look something like:
+
+```
+class ApplicationController < ActionController::Base
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  abstract!
+  protect_from_forgery with: :exception
+  layout :layout_by_resource
+
+  protected
+
+  def layout_by_resource
+    if devise_controller? && resource_name == :administrator
+      'admin'
+    elsif !current_user
+      'signed_out'
+    else
+      'application'
+    end
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :administrator
+      new_administrator_session_path
+    else
+      new_user_session_path
+    end
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    if resource_or_scope.is_a? Administrator
+      admin_root_path
+    else
+      root_path
+    end
+  end
+
+end
+```
+
+Create:
 `app/assets/javascripts/admin.js` (all extra javascript files for admin should go in a /admin folder)
  with the contents:
 
@@ -83,6 +125,7 @@ with the contents:
 @import "bbl_admin_bootstrap_vars";
 @import "bootstrap";
 @import "bbl_admin";
+// @import "admin/your_other_styles";
 ```
 
 Add to routes.rb:
@@ -100,7 +143,9 @@ Install `simple_form`:
 then:
 `rails generate simple_form:install —bootstrap`
 
+Install bootstrap:
 
+`gem 'bootstrap-sass', '~> 3.3.5'`
 
 # Install the BBL admin gem:
 
@@ -118,14 +163,14 @@ Use `admin` for the `namespace_name`. This will generate the admin folder and vi
 
 # Other stuff
 
-Add a flag to precompile additional assets.
+Precompile additional assets - in  `config/initializers/assets.rb`:
 
-    Rails.application.config.assets.precompile += %w(
-      admin.css
-      admin.js
-    )
-
-Copy the `controller?` action from `helper/application_helper.rb`. Otherwise stuff breaks. (It's not a built in rails method).
+```
+Rails.application.config.assets.precompile += %w(
+  admin.css
+  admin.js
+)
+```
 
 # Get the sign in page looking right
 
@@ -139,6 +184,15 @@ For the sake of consistency between projects and minimising context switching pe
 
 * Templating: erb. NOT slim, haml, etc.
 * Image uploads: carrierwave
+* Image manipulation: mini_magick
 * Pagination: kaminari
 * Ansible, if any "infrastructure as code" tool is used.
 
+Handy Development gems:
+
+```
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'bullet'
+```
