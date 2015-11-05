@@ -155,11 +155,9 @@ You should specify a tag until the gem gets into a stable release.
 
 ### Controller
 
-Generate controllers like so:
+Generate controllers and views like so:
 
-    rails generate controller namespace_name/controller_name
-
-Use `admin` for the `namespace_name`. This will generate the admin folder and views. It will also add the admin namespace to the routes.rb file.
+    `bin/rails g bbl_admin:scaffold_controller Post title:string content:text published:boolean category:references`
 
 # Other stuff
 
