@@ -141,7 +141,7 @@ Install `simple_form`:
 
 `gem 'simple_form'`
 then:
-`rails generate simple_form:install —bootstrap`
+`rails generate simple_form:install --bootstrap`
 
 Install bootstrap:
 
