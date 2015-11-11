@@ -6,7 +6,7 @@ This project will mostly attempt to stick to [Semantic Versioning](http://semver
 
 ## [Unreleased][unreleased]
 ### Changed
-- unreleased changes go here
+- `new_link` helper method: add `:namespace` option to options param.
 
 ## [0.3.1] - 2015-10-13
 ### Added

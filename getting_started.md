@@ -1,5 +1,7 @@
 Here's steps on how to start a new project "the BBL way". This is WIP. To get it really good, we'd have to spend a day or so creating "fake" new projects using the steps this guide, and just repeat till it's all smooth.
 
+This guide assumes you want a project with `Administrator`s who can access an admin area, and also `User`s, who are public accounts holders for the site.
+
 - create new rails project without test unit `rails new my_app -T`
 
 - add the following to `.gitignore` (before your first commit!)

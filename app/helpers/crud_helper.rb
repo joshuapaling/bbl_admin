@@ -29,7 +29,8 @@ module CrudHelper
 
   def new_link(model, options = {})
     name = model.table_name.singularize
-    url = options[:url] || send("new_admin_#{name}_path")
+    namespage = options[:namespace] || 'admin'
+    url = options[:url] || send("new_#{namespage}_#{name}_path")
     text = options[:text] || "+ New #{name.humanize}"
     big_link(text, url)
   end
