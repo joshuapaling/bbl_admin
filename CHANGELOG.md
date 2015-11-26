@@ -6,6 +6,10 @@ This project will mostly attempt to stick to [Semantic Versioning](http://semver
 
 ## [Unreleased][unreleased]
 ### Added
+- changes go here
+
+## [0.3.2] - 2015-11-26
+### Added
 - `new_link` helper method: add `:namespace` option to options param.
 - `big_link` helper method: add options param with `:inline` option.
 - `admin_submit_btn` helper method: add options param with `:text` option.
