@@ -1,13 +1,12 @@
 module CrudHelper
-
   # from https://coderwall.com/p/jzofog
   def flash_class(level)
     case level.to_sym
-        when :notice then "alert alert-info"
-        when :success then "alert alert-success"
-        when :error then "alert alert-danger"
-        when :alert then "alert alert-warning"
-        else 'alert alert-info'
+    when :notice then 'alert alert-info'
+    when :success then 'alert alert-success'
+    when :error then 'alert alert-danger'
+    when :alert then 'alert alert-warning'
+    else 'alert alert-info'
     end
   end
 
@@ -23,8 +22,9 @@ module CrudHelper
     resource.persisted? ? 'Edit' : 'New'
   end
 
-  def big_link(text, url)
-    link_to text, url, :class => 'btn btn-lg btn-primary clearfix'
+  def big_link(text, url, options = {})
+    clearfix = options[:inline] ? '' : 'clearfix'
+    link_to text, url, class: "btn btn-lg btn-primary #{clearfix}"
   end
 
   def new_link(model, options = {})
@@ -52,8 +52,8 @@ module CrudHelper
     raw(html)
   end
 
-  def admin_submit_btn(f)
-    f.button :submit, 'Save', class: 'btn btn-primary btn-lg'
+  def admin_submit_btn(f, options = {})
+    text = options[:text] || 'Save'
+    f.button :submit, text, class: 'btn btn-primary btn-lg'
   end
-
 end
