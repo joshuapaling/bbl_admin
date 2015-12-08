@@ -56,4 +56,18 @@ module CrudHelper
     text = options[:text] || 'Save'
     f.button :submit, text, class: 'btn btn-primary btn-lg'
   end
+
+  # useful for when you have an enum from a model, and
+  # want to make a user-friendly drop down
+  def humanize_keys(hash)
+    Hash[hash.map { |k, v| [k.humanize, v] }]
+  end
+
+  def tick_or_cross(val)
+    if val
+      content_tag(:span, bs_icon('ok'), class: 'text-success')
+    else
+      content_tag(:span, bs_icon('remove'), class: 'text-danger')
+    end
+  end
 end

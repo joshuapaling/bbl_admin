@@ -6,7 +6,8 @@ This project will mostly attempt to stick to [Semantic Versioning](http://semver
 
 ## [Unreleased][unreleased]
 ### Added
-- changes go here
+- `humanize_keys` helper method - for user-friendly enum dropdowns
+- `tick_or_cross` helper method - for presenting booleans as a red tick or green cross
 
 ## [0.3.2] - 2015-11-26
 ### Added
